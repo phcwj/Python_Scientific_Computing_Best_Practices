@@ -6,9 +6,9 @@ def info():
     import sys, platform, re
     from os import path
 
-    print("Welcome to Scpy2")
-    print("Python:", platform.python_version())
-    print("executable:", path.abspath(sys.executable))
+    print "Welcome to Scpy2"
+    print "Python:", platform.python_version()
+    print "executable:", path.abspath(sys.executable)
 
     try:
         patterns = r"numpy.*|scipy.*|sympy.*|pandas.*|opencv.*|ets.*|cython.*|matplotlib.*"
@@ -16,6 +16,6 @@ def info():
         dist = wppm.Distribution(sys.prefix)
         for package in dist.get_installed_packages():
             if re.match(patterns, package.name, flags=re.IGNORECASE):
-                print("{:20s}: {}".format(package.name, package.version))
+                print "{:20s}: {}".format(package.name, package.version)
     except ImportError:
         pass
