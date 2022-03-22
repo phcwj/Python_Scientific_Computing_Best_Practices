@@ -4,3 +4,4 @@
 /繁中程式碼/notebooks/05-pandas/data/
 /繁中程式碼/notebooks/data/ml-100k/
 /繁中程式碼/settings/
+*.pyc
