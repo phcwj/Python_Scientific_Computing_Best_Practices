@@ -2,8 +2,16 @@ import os
 import sys
 from os import path
 from collections import OrderedDict
-from ConfigParser import ConfigParser
-import _winreg
+try:
+    from ConfigParser import ConfigParser
+except:
+    from configparser import ConfigParser
+
+try:
+    import _winreg
+except:
+    import winreg as _winreg
+
 from distutils.msvc9compiler import find_vcvarsall
 import setuptools
 
@@ -27,7 +35,7 @@ def show_compiler():
     if compiler_name == "msvc":
         compiler = ccompiler.new_compiler(compiler=compiler_name)
         version = str(compiler._MSVCCompiler__version)
-    print "{} {} defined by {}".format(compiler_name, version, fn)
+    print( "{} {} defined by {}".format(compiler_name, version, fn) )
 
 
 def set_msvc_version(version):
@@ -101,17 +109,17 @@ def add_vc9_reg(vc_dir):
     _winreg.SetValueEx(key, "ProductDir", None, _winreg.REG_SZ, vc_dir)
     bat_path = find_vcvarsall(9.0)
     if bat_path is not None and path.exists(bat_path):
-        print "Succeeded"
+        print( "Succeeded" )
     else:
-        print "Failed"
+        print( "Failed" )
 
 
 def remove_vc9_reg():
     try:
         _winreg.DeleteKeyEx(HCU, r"Software\Microsoft\VisualStudio\9.0\Setup\VC")
-        print "Removed"
+        print( "Removed" )
     except WindowsError:
-        print "key not exist"
+        print( "key not exist" )
 
 
 def select_mingw32():
@@ -122,8 +130,8 @@ def select_msvcpy():
     set_compiler("msvc")
     vc_dir = get_vc9_dir()
     if not path.exists(vc_dir):
-        print vc_dir, "not exists"
-        print "Please install Visual C++ for Python first"
+        print( vc_dir, "not exists" )
+        print( "Please install Visual C++ for Python first" )
         return
     add_vc9_reg(vc_dir)
 
@@ -136,7 +144,7 @@ def select_msvc(version=None):
             if vc_dir is not None:
                 break
         else:
-            print "No Visual C++ compiler"
+            print( "No Visual C++ compiler" )
             return
     else:
         vc_dir = find_vcvarsall(version)
