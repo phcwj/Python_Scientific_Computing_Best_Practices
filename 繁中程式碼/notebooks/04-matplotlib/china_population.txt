@@ -1,4 +1,4 @@
-﻿#"Midyear Population  by Age and Sex for China"
+#"Midyear Population  by Age and Sex for China"
 #Age "Male Population" "Female Population"
 0 40516152 34695655
 5 41347074 34980960
