@@ -1,4 +1,4 @@
-﻿Dose,Response1,Response2,Tmt,Age,Gender
+Dose,Response1,Response2,Tmt,Age,Gender
 50.0,9.872,10.032,C,60s,F
 15.0,0.002,0.004,D,60s,F
 25.0,0.626,0.803,C,50s,M
